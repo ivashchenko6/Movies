@@ -6,14 +6,14 @@ export const useHttp = () => {
 
     const request = async(url) => {
         setLoading(true);
-        const API_KEY = process.env.REACT_APP_API_KEY;
+        const apiKEY = process.env.REACT_APP_API_KEY;
 
         try {
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
                     accept: 'application/json',
-                    Authorization: `Bearer ${API_KEY}`,
+                    Authorization: `Bearer ${apiKEY}`,
                 },
             });
 

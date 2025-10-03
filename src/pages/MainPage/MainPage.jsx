@@ -1,14 +1,19 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './mainPage.scss';
 import RequestService from '../../services/RequestService';
 
 const MainPage = () => {
-    const { loading, error, cleanError, getTrendingMovies } = RequestService();
-    useEffect(() => {
-        const data = getTrendingMovies();
+    // const { loading, error, cleanError, getTrendingMovies } = RequestService();
+    // const [data,setData] = useState({})
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const data = await getTrendingMovies();
+    //         setData(data)
+    //     }
 
-        console.log(data);
-    }, []);
+
+    //     fetchData()
+    // }, []);
 
     return <h1>Main Page</h1>;
 };
