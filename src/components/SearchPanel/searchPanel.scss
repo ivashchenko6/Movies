@@ -1,0 +1,35 @@
+.search-panel {
+    margin: 0 auto;
+    margin-top: 50px;
+
+    display: flex;
+    width: 460px;
+    justify-content: space-between;
+    align-items: center;
+
+
+    input {
+        color: white;
+        border: 2px solid #8707ff;
+        border-radius: 10px;
+        padding: 10px 25px;
+        background: transparent;
+
+        font-size: 25px;
+        width: 400px;
+        height: 60px;
+    }
+
+    input:active {
+    box-shadow: 2px 2px 15px #8707ff inset;
+    }
+
+    input::placeholder {
+        color: white; /* любой цвет, например серый */
+    }
+
+
+    &__icon {
+        // margin-left: 20px;
+    }
+}

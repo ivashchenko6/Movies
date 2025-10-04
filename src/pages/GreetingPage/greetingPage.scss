@@ -1,14 +1,5 @@
 .greeting {
 
-
-
-    &-title {
-        color:white;
-        font-size: 60px;
-        text-align: center;
-
-    }
-
     &-description  {
 
         display: block;
@@ -18,6 +9,11 @@
         color:white;
         text-align: center;
         font-size: 30px;
+        &__api {
+            color:#27D68D;
+            text-decoration: underline;
+            font-weight: 700;
+        }
     }
 
     span {
@@ -26,12 +22,7 @@
 
     }
 
-    a {
-        color:#27D68D;
-        text-decoration: underline;
-        font-weight: 700;
 
-    }
 }
 
 .getStarted {
@@ -40,6 +31,9 @@
     margin-top: 100px;
     background: #EEAECA;
     background: radial-gradient(circle,rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 

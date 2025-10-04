@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './mainPage.scss';
 import RequestService from '../../services/RequestService';
+import SearchPanel from '../../components/SearchPanel/SearchPanel';
 
 const MainPage = () => {
     // const { loading, error, cleanError, getTrendingMovies } = RequestService();
@@ -15,7 +16,11 @@ const MainPage = () => {
     //     fetchData()
     // }, []);
 
-    return <h1>Main Page</h1>;
+    return (
+        <main className="main">
+            <SearchPanel />
+        </main>
+    );
 };
 
 export default MainPage;

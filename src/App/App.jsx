@@ -4,10 +4,12 @@ import MainPage from '../pages/MainPage/MainPage';
 
 import './reset.scss';
 import './app.scss';
+import Header from '../components/Header/Header';
 
 const App = () => {
     return (
         <div className='app'>
+            <Header/>
             <Routes>
                 <Route path='/' element={<GreetingPage />} />
 
