@@ -5,9 +5,11 @@ const RequestService = () => {
     const baseUrl = process.env.REACT_APP_MOVIEDB_URL;
 
     const getTrendingMovies = async() => {
-        const response = await request(`${baseUrl}trending/movie/day?language=en-US`);
+        const response = await request(
+            `${baseUrl}trending/movie/day?language=en-US`,
+        );
 
-        return response;
+        return response.results;
     };
 
     return {
