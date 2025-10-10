@@ -1,5 +1,7 @@
 import './trendingMovieItem.scss';
 
+import starIcon from '../../assets/icons/star.png';
+
 const TrendingMovieItem = ({ movieItem }) => {
     const {
         poster_path: movieImg,
@@ -19,7 +21,15 @@ const TrendingMovieItem = ({ movieItem }) => {
                 className='trending-movies__list-item__poster'
             />
             <div className='trending-movies__list-item__about'>
-                <h2 className='trending-movies__list-item__title'>{title}</h2>
+                <div className='trending-movies__list-item__header'>
+                    <h2 className='trending-movies__list-item__title'>
+                        {title}
+                    </h2>
+                    <span className='trending-movies__list-item__average'>
+                        {+vote_average.toFixed(0)}/10
+                    </span>
+                    <img src={starIcon} alt='star-icon' className='star-icon' />
+                </div>
             </div>
         </li>
     );

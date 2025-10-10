@@ -1,0 +1,28 @@
+.trending-movies__list-item {
+    display: flex;
+    margin-top: 120px;
+    // justify-content: space-between;
+    &__poster {
+        width: 300px;
+        height: 500px;
+    }
+    &__about {
+        // margin-left: 50px;
+    }
+    &__title {
+        font-size: 35px;
+        text-align: left;
+    }
+    &__header {
+        display: flex;
+    }
+    &__average {
+        font-size: 35px;
+        margin-left: 30px;
+    }
+}
+
+.star-icon {
+    width: 40px;
+    height: 40px;
+}
