@@ -22,13 +22,23 @@ const TrendingMovieItem = ({ movieItem }) => {
             />
             <div className='trending-movies__list-item__about'>
                 <div className='trending-movies__list-item__header'>
-                    <h2 className='trending-movies__list-item__title'>
-                        {title}
-                    </h2>
-                    <span className='trending-movies__list-item__average'>
-                        {+vote_average.toFixed(0)}/10
-                    </span>
-                    <img src={starIcon} alt='star-icon' className='star-icon' />
+                    <p className='trending-movies__list-item__title'>
+                        {title.length < 22 ? title : title.slice(0, 22) + '...'}
+                    </p>
+                    <div className='trending-movies__list-item__rating-wrapper'>
+                        <p className='trending-movies__list-item__average'>
+                            {+vote_average.toFixed(0)}/10
+                        </p>
+                        <img
+                            src={starIcon}
+                            alt='star-icon'
+                            className='star-icon'
+                        />
+                    </div>
+                </div>
+
+                <div className='trending-movies__list-item__body'>
+                    {overview}
                 </div>
             </div>
         </li>
