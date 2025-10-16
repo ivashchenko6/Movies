@@ -12,11 +12,27 @@ const RequestService = () => {
         return response.results;
     };
 
+    const getMovieDetailsByID = async (movieID) => {
+        const response = await request(
+            `https://api.themoviedb.org/3/movie/${movieID}?language=en-US`
+        );
+
+        return response;
+    }
+
+    const getAllGenres = async () => {
+        const response = await request('https://api.themoviedb.org/3/genre/movie/list?language=en');
+
+        return response.genres;
+    }
+
     return {
         loading,
         error,
         cleanError,
         getTrendingMovies,
+        getMovieDetailsByID,
+        getAllGenres
     };
 };
 

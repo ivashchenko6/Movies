@@ -4,6 +4,7 @@ import RequestService from '../../services/RequestService';
 import SearchPanel from '../../components/SearchPanel/SearchPanel';
 import TrendingMoviesList from '../../components/TrendingMoviesList/TrendingMoviesList';
 import Spinner from '../../components/Spinner/Spinner';
+import ErrorComponent from '../../components/ErrorComponent/ErrorComponent';
 
 const MainPage = () => {
     const { loading, error, cleanError, getTrendingMovies } = RequestService();
@@ -17,11 +18,17 @@ const MainPage = () => {
         fetchData();
     }, []);
 
+
+    const spinner = loading ? <Spinner marginTop="100px"/> : null;
+    const errorMessage = error ? <ErrorComponent/>  : null;
+    const content = !(loading || error || !trendingMovies) ? <TrendingMoviesList trendingMovies={trendingMovies} /> : null;
+
     return (
         <main className='main'>
             <SearchPanel />
-            {/* <Spinner /> */}
-            <TrendingMoviesList trendingMovies={trendingMovies} />
+            {spinner}
+            {errorMessage}
+            {content}
         </main>
     );
 };

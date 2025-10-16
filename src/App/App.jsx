@@ -5,6 +5,7 @@ import MainPage from '../pages/MainPage/MainPage';
 import './reset.scss';
 import './app.scss';
 import Header from '../components/Header/Header';
+import MoviePage from '../pages/MoviePage/MoviePage';
 
 const App = () => {
     return (
@@ -15,7 +16,7 @@ const App = () => {
 
                 <Route path='/main' element={<MainPage />} />
 
-                <Route />
+                <Route path='/movies/:id' element={<MoviePage />}/>
             </Routes>
         </div>
     );
