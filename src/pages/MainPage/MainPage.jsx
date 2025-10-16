@@ -7,8 +7,9 @@ import Spinner from '../../components/Spinner/Spinner';
 import ErrorComponent from '../../components/ErrorComponent/ErrorComponent';
 
 const MainPage = () => {
-    const { loading, error, cleanError, getTrendingMovies } = RequestService();
+    const { loading, error, cleanError, getTrendingMovies, getAllGenres } = RequestService();
     const [trendingMovies, setTrendingMovies] = useState([]);
+    const  [genresList, setGenresList] = useState([])
     useEffect(() => {
         const fetchData = async () => {
             //Getting trending movies
@@ -16,6 +17,16 @@ const MainPage = () => {
             setTrendingMovies(data);
         };
         fetchData();
+    }, []);
+
+    useEffect(() => {
+        const genresData = async () => {
+            const  data = await  getAllGenres();
+            setGenresList(data);
+        }
+
+        genresData();
+
     }, []);
 
 

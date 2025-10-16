@@ -3,10 +3,10 @@ import './moviePage.scss';
 
 
 const MoviePage = () => {
-    const params = useParams().id
+    const movieID = useParams().id;
 
 
-    console.log(params);
+    console.log(movieID);
 
     return (
         <h1>Movie Page</h1>
