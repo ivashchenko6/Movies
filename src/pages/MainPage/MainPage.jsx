@@ -14,6 +14,7 @@ const MainPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             //Getting trending movies
+            cleanError();
             const data = await getTrendingMovies();
             setTrendingMovies(data);
         };
@@ -23,6 +24,7 @@ const MainPage = () => {
     useEffect(() => {
         const genresData = async () => {
             //Getting all genres list
+            cleanError();
             const data = await getAllGenres();
             setGenresList(data);
         };
