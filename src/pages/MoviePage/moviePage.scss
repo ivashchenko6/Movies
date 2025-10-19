@@ -1,0 +1,24 @@
+.movie-page {
+    margin-top: 100px;
+
+    &__header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 45px;
+
+        &-title {
+            display: inline;
+            color: #FFEA70;
+        }
+
+        &-rating {
+            display: flex;
+        }
+    }
+
+    &__poster {
+        width: 500px;
+        height: 700px;
+    }
+}

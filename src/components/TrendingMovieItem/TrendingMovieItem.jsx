@@ -16,7 +16,7 @@ const TrendingMovieItem = ({ movieItem, genresList }) => {
         original_language,
     } = movieItem;
 
-    const genresLink = getGenresForCurrentMovie(genresList, genre_ids).map(
+    const makeGenresLink = getGenresForCurrentMovie(genresList, genre_ids).map(
         (genre, i) => {
             return (
                 <>
@@ -82,7 +82,7 @@ const TrendingMovieItem = ({ movieItem, genresList }) => {
                     <div>
                         <span className='movie-data__span'>Genres: </span>
                         <p className='trending-movies__list-item__body-genres'>
-                            {genresLink}
+                            {makeGenresLink}
                         </p>
                     </div>
                     <div>
