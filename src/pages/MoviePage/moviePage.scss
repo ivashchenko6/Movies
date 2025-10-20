@@ -1,9 +1,12 @@
 .movie-page {
-    margin-top: 100px;
+    margin-top: 50px;
+    padding: 0 100px;
 
     &__header {
+        width: 360px;
+        margin: 0 auto;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         font-size: 45px;
 
@@ -14,11 +17,44 @@
 
         &-rating {
             display: flex;
+            align-items: center;
+
+            img {
+                margin-left: 10px;
+            }
         }
     }
 
+    &__body {
+        p {
+            display: inline;
+            color:white;
+            margin-left: 10px;
+        }
+    }
+
+    &__info-block {
+        margin-bottom: 20px;
+    }
+
     &__poster {
-        width: 500px;
-        height: 700px;
+        width: 400px;
+        height: 600px;
+    }
+
+
+    &__body-info {
+        display: flex;
+        margin-top: 100px;
+
+    }
+
+    &__about {
+
+        font-size: 30px;
+        margin-left: 60px;
+        span  {
+            font-size: 35px;
+        }
     }
 }

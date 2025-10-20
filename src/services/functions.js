@@ -1,4 +1,6 @@
 export function modifyDate(date, time = ":") {
+
+    //[2025, 08, 27]
     let [year, month, day] = date.split('-'); //['2024', '01', '12']  //Year Month
     let [hours, minutes] = time.split(':');
     switch(month) {
@@ -42,5 +44,5 @@ export function modifyDate(date, time = ":") {
         default:
 
     }
-    return {month, day, year, hours, minutes, readyString: `${month} ${day} ${year}`};
+    return {month, day, year, hours, minutes, readyDate: `${month} ${day}, ${year}`};
 }
