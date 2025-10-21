@@ -7,7 +7,8 @@ const TrendingMovieItem = ({ movieItem, genresList }) => {
     const {
         poster_path: movieImg,
         genre_ids,
-        original_title: title,
+        title,
+        original_title,
         id: movieId,
         overview,
         release_date,
@@ -67,7 +68,7 @@ const TrendingMovieItem = ({ movieItem, genresList }) => {
                             Original title:{' '}
                         </span>
                         <p className='trending-movies__list-item__body-original-title'>
-                            {title}
+                            {original_title}
                         </p>
                     </div>
                     <div>
