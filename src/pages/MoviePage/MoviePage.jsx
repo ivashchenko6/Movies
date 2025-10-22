@@ -60,19 +60,19 @@ const MoviePageItem = ({ movieDetails }) => {
 
     const generateGenreItems = genres
         ? genres.map((genre, i) => {
-              return (
-                  <>
-                      <Link
-                          to={`/genres/${genre.id}`}
-                          key={i}
-                          className='genre-link'
-                      >
-                          {genre.name}
-                      </Link>
-                      {i !== genres.length - 1 ? ', ' : null}
-                  </>
-              );
-          })
+            return (
+                <>
+                    <Link
+                        to={`/genres/${genre.id}`}
+                        key={i}
+                        className='genre-link'
+                    >
+                        {genre.name}
+                    </Link>
+                    {i !== genres.length - 1 ? ', ' : null}
+                </>
+            );
+        })
         : null;
     return (
         <>

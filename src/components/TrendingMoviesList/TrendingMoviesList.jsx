@@ -1,10 +1,10 @@
-import TrendingMovieItem from '../TrendingMovieItem/TrendingMovieItem';
+import MovieItem from'../MovieItem/MovieItem';
 import './trendingMoviesList.scss';
 
 const TrendingMoviesList = ({ trendingMovies, genresList }) => {
     const movieItems = trendingMovies.map((movieItem, i) => {
         return (
-            <TrendingMovieItem
+            <MovieItem
                 key={i}
                 movieItem={movieItem}
                 genresList={genresList}

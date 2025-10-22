@@ -13,7 +13,7 @@ const RequestService = () => {
 
     const getMovieDetailsByID = async(movieID) => {
         const response = await request(
-            `https://api.themoviedb.org/3/movie/${movieID}?language=en-US`,
+            `${baseUrl}movie/${movieID}?language=en-US`,
         );
 
         return response;
@@ -21,7 +21,7 @@ const RequestService = () => {
 
     const getAllGenres = async() => {
         const response = await request(
-            'https://api.themoviedb.org/3/genre/movie/list?language=en',
+            `${baseUrl}genre/movie/list?language=en`,
         );
 
         return response.genres;
@@ -29,10 +29,16 @@ const RequestService = () => {
 
     const getMovieReviewsByID = async(movie_id = 0) => {
         const response = await request(
-            `https://api.themoviedb.org/3/movie/${movie_id}/reviews`,
+            `${baseUrl}movie/${movie_id}/reviews`,
         );
         return response.results;
     };
+
+
+    const findMovieByName = async (movieName) => {
+        const response = await request(`${baseUrl}search/movie?query=${movieName}&include_adult=false&language=en-US&page=1`)
+        return response.results;
+    }
 
     return {
         loading,
@@ -42,6 +48,7 @@ const RequestService = () => {
         getMovieDetailsByID,
         getAllGenres,
         getMovieReviewsByID,
+        findMovieByName
     };
 };
 

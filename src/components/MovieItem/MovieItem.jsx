@@ -1,29 +1,35 @@
-import './trendingMovieItem.scss';
+import './movieItem.scss';
 
 import starIcon from '../../assets/icons/star.png';
 import { Link } from 'react-router-dom';
+// import Spinner from '../Spinner/Spinner';
 
-const TrendingMovieItem = ({ movieItem, genresList }) => {
+const MovieItem = ({ movieItem, genresList }) => {
+    console.log(movieItem)
+
+    if (!movieItem || !movieItem.title) return null;
+
     const {
-        poster_path: movieImg,
-        genre_ids,
-        title,
-        original_title,
-        id: movieId,
-        overview,
-        release_date,
-        vote_average,
-        vote_count,
-        original_language,
-    } = movieItem;
+        poster_path: movieImg = '',
+        genre_ids = [],
+        title = '',
+        original_title = '',
+        id: movieId = 0,
+        overview = '',
+        release_date = '',
+        vote_average = 0,
+        vote_count = 0,
+        original_language = '',
+    } = movieItem || {};
 
     const makeGenresLink = getGenresForCurrentMovie(genresList, genre_ids).map(
         (genre, i) => {
             return (
                 <>
                     <Link
+                        key={i}
                         to={`/genres/${genre.toLowerCase()}`}
-                        className='trending-movies__list-item__body-genres-item'
+                        className='movie-item__list-item__body-genres-item'
                     >
                         {genre}
                     </Link>
@@ -33,20 +39,21 @@ const TrendingMovieItem = ({ movieItem, genresList }) => {
         },
     );
     return (
-        <li className='trending-movies__list-item'>
+        <li className='movie-item__list-item'>
             <img
                 src={`https://www.themoviedb.org/t/p/original${movieImg}`}
                 alt={title}
-                className='trending-movies__list-item__poster'
+                className='movie-item__list-item__poster'
             />
-            <div className='trending-movies__list-item__about'>
-                <div className='trending-movies__list-item__header'>
-                    <p className='trending-movies__list-item__title'>
-                        {title.length < 20 ? title : title.slice(0, 20) + '...'}
+            <div className='movie-item__list-item__about'>
+                <div className='movie-item__list-item__header'>
+                    <p className='movie-item__list-item__title'>
+                        {(title?.length< 20 && title) ? title : title.slice(0, 20) + '...'}
+
                     </p>
-                    <div className='trending-movies__list-item__rating-wrapper'>
-                        <p className='trending-movies__list-item__average'>
-                            {+vote_average.toFixed(0)}/10
+                    <div className='movie-item__list-item__rating-wrapper'>
+                        <p className='movie-item__list-item__average'>
+                            { vote_average ? +vote_average.toFixed(0) : ""}/10
                         </p>
                         <img
                             src={starIcon}
@@ -56,10 +63,10 @@ const TrendingMovieItem = ({ movieItem, genresList }) => {
                     </div>
                 </div>
 
-                <div className='trending-movies__list-item__body'>
+                <div className='movie-item__list-item__body'>
                     <div>
                         <span className='movie-data__span'>Description: </span>
-                        <p className='trending-movies__list-item__body-description'>
+                        <p className='movie-item__list-item__body-description'>
                             {overview}
                         </p>
                     </div>
@@ -67,7 +74,7 @@ const TrendingMovieItem = ({ movieItem, genresList }) => {
                         <span className='movie-data__span'>
                             Original title:{' '}
                         </span>
-                        <p className='trending-movies__list-item__body-original-title'>
+                        <p className='movie-item__list-item__body-original-title'>
                             {original_title}
                         </p>
                     </div>
@@ -75,20 +82,20 @@ const TrendingMovieItem = ({ movieItem, genresList }) => {
                         <span className='movie-data__span'>
                             Original language:{' '}
                         </span>
-                        <p className='trending-movies__list-item__body-original-language'>
+                        <p className='movie-item__list-item__body-original-language'>
                             {original_language}
                         </p>
                     </div>
 
                     <div>
                         <span className='movie-data__span'>Genres: </span>
-                        <p className='trending-movies__list-item__body-genres'>
+                        <p className='movie-item__list-item__body-genres'>
                             {makeGenresLink}
                         </p>
                     </div>
                     <div>
                         <span className='movie-data__span'>Vote Count: </span>
-                        <p className='trending-movies__list-item__body-vote-count'>
+                        <p className='movie-item__list-item__body-vote-count'>
                             {vote_count}
                         </p>
                     </div>
@@ -96,7 +103,7 @@ const TrendingMovieItem = ({ movieItem, genresList }) => {
                         <span className='movie-data__span'>
                             Realease Date:{' '}
                         </span>
-                        <p className='trending-movies__list-item__body-realease-date'>
+                        <p className='movie-item__list-item__body-realease-date'>
                             {release_date}
                         </p>
                     </div>
@@ -127,4 +134,4 @@ function getGenresForCurrentMovie(genresList, genresMovieIDs) {
     return finalGenreNames;
 }
 
-export default TrendingMovieItem;
+export default MovieItem;
