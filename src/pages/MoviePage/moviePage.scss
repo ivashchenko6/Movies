@@ -50,3 +50,11 @@
 .genre-link {
     text-decoration: underline;
 }
+
+.movie-page {
+    &__description {
+        margin-top: 70px;
+        font-size: 30px;
+        color: white;
+    }
+}

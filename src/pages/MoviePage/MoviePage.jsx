@@ -6,6 +6,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import ErrorComponent from '../../components/ErrorComponent/ErrorComponent';
 import { modifyDate } from '../../services/functions';
 import starIcon from '../../assets/icons/star.png';
+import Comments from '../../components/Comments/Comments';
 
 const MoviePage = () => {
     const { loading, error, cleanError, getMovieDetailsByID } =
@@ -20,7 +21,7 @@ const MoviePage = () => {
             setMovieDetails(response);
         };
         fetchData();
-    }, []);
+    }, [movieID]);
 
     const spinner = loading ? <Spinner /> : null;
     const errorMessage = error ? <ErrorComponent /> : null;
@@ -60,19 +61,19 @@ const MoviePageItem = ({ movieDetails }) => {
 
     const generateGenreItems = genres
         ? genres.map((genre, i) => {
-            return (
-                <>
-                    <Link
-                        to={`/genres/${genre.id}`}
-                        key={i}
-                        className='genre-link'
-                    >
-                        {genre.name}
-                    </Link>
-                    {i !== genres.length - 1 ? ', ' : null}
-                </>
-            );
-        })
+              return (
+                  <>
+                      <Link
+                          to={`/genres/${genre.id}`}
+                          key={i}
+                          className='genre-link'
+                      >
+                          {genre.name}
+                      </Link>
+                      {i !== genres.length - 1 ? ', ' : null}
+                  </>
+              );
+          })
         : null;
     return (
         <>
@@ -153,7 +154,9 @@ const MoviePageItem = ({ movieDetails }) => {
                 </div>
             </div>
 
-            <div className='movie-page__item-description'></div>
+            <div className='movie-page__description'>{overview}</div>
+
+            <Comments movieID={id} />
         </>
     );
 };
