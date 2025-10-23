@@ -5,6 +5,7 @@ import ErrorComponent from '../ErrorComponent/ErrorComponent';
 import Spinner from '../Spinner/Spinner';
 
 import basicReviewUserPicture from '../../assets/icons/review-user-picture.png';
+import { modifyDate } from '../../services/functions';
 
 const Comments = ({ movieID }) => {
     const { loading, error, cleanError, getMovieReviewsByID } =
@@ -43,6 +44,7 @@ const Comments = ({ movieID }) => {
 };
 
 const CommentItem = ({ reviewItem }) => {
+    const [expendedReview, setExpendedReview] = useState(false);
     const {
         author = '',
         author_details: { avatar_path } = {},
@@ -50,34 +52,49 @@ const CommentItem = ({ reviewItem }) => {
         created_at = '',
     } = reviewItem;
 
-    const avatarUrl = avatar_path
-        ? avatar_path.startsWith('/https')
-            ? avatar_path.slice(1)
-            : `https://image.tmdb.org/t/p/w200${avatar_path}`
-        : basicReviewUserPicture;
+    // const avatarUrl = avatar_path
+    //     ? avatar_path.startsWith('/https')
+    //         ? avatar_path.slice(1)
+    //         : `https://image.tmdb.org/t/p/w200${avatar_path}`
+    //     : basicReviewUserPicture;
 
-    return (
-        <li className='reviews-list__item'>
-            <img
-                src={avatarUrl}
-                alt='reviews'
-                className='reviews-list__item-avatar'
-            />
-            <div className='reviews-list__item-about'>
-                <div className='reviews-list__item-header'>
-                    <p className='reviews-list__item-header__name'>{author}</p>
-                    <p className='reviews-list__item-header__createdat'>
-                        {created_at}
-                    </p>
-                </div>
-                <div className='reviews-list__item-description'>
-                    {content.length < 250
-                        ? content
-                        : content.slice(0, 250) + <button>...</button>}
-                </div>
-            </div>
-        </li>
+    let { readyDate, hours, minutes, seconds } = modifyDate(
+        ...created_at.split('T'),
     );
+    seconds = seconds.split('.')[0];
+
+    let expandReviewButton = (
+        <button
+            className='expand-review'
+            onClick={() => setExpendedReview(!expendedReview)}
+        >
+            {!expendedReview ? 'Show More' : 'Show Less'}
+        </button>
+    );
+
+    if (content.length < 250)
+        return (
+            <li className='reviews-list__item'>
+                <img
+                    src={basicReviewUserPicture}
+                    alt='reviews'
+                    className='reviews-list__item-avatar'
+                />
+                <div className='reviews-list__item-about'>
+                    <div className='reviews-list__item-header'>
+                        <p className='reviews-list__item-header__name'>
+                            {author}
+                        </p>
+                        <p className='reviews-list__item-header__createdat'>
+                            {`${readyDate} ${hours}:${minutes}:${seconds}`}
+                        </p>
+                    </div>
+                    <div className='reviews-list__item-description'>
+                        {content.length < 250 ? content : content.slice(0, 250)}
+                    </div>
+                </div>
+            </li>
+        );
 };
 
 export default Comments;
