@@ -63,38 +63,45 @@ const CommentItem = ({ reviewItem }) => {
     );
     seconds = seconds.split('.')[0];
 
-    let expandReviewButton = (
+    let expandReviewButton = null;
+
+    if (content.length >= 250) {
+        expandReviewButton  = (
         <button
             className='expand-review'
+            style={{"marginLeft": "10px"}}
             onClick={() => setExpendedReview(!expendedReview)}
         >
             {!expendedReview ? 'Show More' : 'Show Less'}
         </button>
     );
+    }
 
-    if (content.length < 250)
-        return (
-            <li className='reviews-list__item'>
-                <img
-                    src={basicReviewUserPicture}
-                    alt='reviews'
-                    className='reviews-list__item-avatar'
-                />
-                <div className='reviews-list__item-about'>
-                    <div className='reviews-list__item-header'>
-                        <p className='reviews-list__item-header__name'>
-                            {author}
-                        </p>
-                        <p className='reviews-list__item-header__createdat'>
-                            {`${readyDate} ${hours}:${minutes}:${seconds}`}
-                        </p>
-                    </div>
-                    <div className='reviews-list__item-description'>
-                        {content.length < 250 ? content : content.slice(0, 250)}
-                    </div>
+
+    return (
+        <li className='reviews-list__item'>
+            <img
+                src={basicReviewUserPicture}
+                alt='reviews'
+                className='reviews-list__item-avatar'
+            />
+            <div className='reviews-list__item-about'>
+                <div className='reviews-list__item-header'>
+                    <p className='reviews-list__item-header__name'>
+                        {author}
+                    </p>
+                    <p className='reviews-list__item-header__createdat'>
+                        {`${readyDate} ${hours}:${minutes}:${seconds}`}
+                    </p>
                 </div>
-            </li>
-        );
+                <div className='reviews-list__item-description'>
+                    {content.length < 250 ? content : content.slice(0, 250)}
+                    {expendedReview ? content.slice(250) : ""}
+                    {expandReviewButton}
+                </div>
+            </div>
+        </li>
+    );
 };
 
 export default Comments;
