@@ -39,6 +39,16 @@ const RequestService = () => {
         return response.results;
     };
 
+
+    const getMoviesByGenre = async (page = 1, genreID) => {
+        const response = await request(
+            `${baseUrl}discover/movie?movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${genreID}`
+        )
+        return response.results;
+    }
+
+
+
     return {
         loading,
         error,
@@ -48,6 +58,7 @@ const RequestService = () => {
         getAllGenres,
         getMovieReviewsByID,
         findMovieByName,
+        getMoviesByGenre
     };
 };
 

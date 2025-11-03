@@ -6,8 +6,10 @@ import './reset.scss';
 import './app.scss';
 import Header from '../components/Header/Header';
 import MoviePage from '../pages/MoviePage/MoviePage';
+import MoviesByGenreList from '../components/MoviesByGenreList/MoviesByGenreList';
 
 const App = () => {
+
     return (
         <div className='app'>
             <Header/>
@@ -17,6 +19,9 @@ const App = () => {
                 <Route path='/main' element={<MainPage />} />
 
                 <Route path='/movies/:id' element={<MoviePage />}/>
+
+
+                <Route path='/genres/:genreID' element={<MoviesByGenreList/>}/>
             </Routes>
         </div>
     );

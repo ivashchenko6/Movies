@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 // import Spinner from '../Spinner/Spinner';
 
 const MovieItem = ({ movieItem, genresList }) => {
-    console.log(movieItem)
+
+
 
     if (!movieItem || !movieItem.title) return null;
 
@@ -24,14 +25,15 @@ const MovieItem = ({ movieItem, genresList }) => {
 
     const makeGenresLink = getGenresForCurrentMovie(genresList, genre_ids).map(
         (genre, i) => {
+
             return (
                 <>
                     <Link
                         key={i}
-                        to={`/genres/${genre.toLowerCase()}`}
+                        to={`/genres/${genre.id}`}
                         className='movie-item__list-item__body-genres-item'
                     >
-                        {genre}
+                        {genre.name}
                     </Link>
                     {i !== genre_ids.length - 1 ? ', ' : null}
                 </>
@@ -126,7 +128,7 @@ function getGenresForCurrentMovie(genresList, genresMovieIDs) {
     for (let i = 0; i < genresList.length; i++) {
         for (let j = 0; j < genresMovieIDs.length; j++) {
             if (genresList[i].id === genresMovieIDs[j]) {
-                finalGenreNames.push(genresList[i].name);
+                finalGenreNames.push(genresList[i]);
             }
         }
     }
